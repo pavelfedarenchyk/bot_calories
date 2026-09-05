@@ -463,7 +463,8 @@ async def search_openfoodfacts(query):
         'search_simple': 1,
         'action': 'process',
         'json': 1,
-        'page_size': 10
+        'page_size': 10,
+        'lc': 'ru'
     }
 
     try:

@@ -43,3 +43,4 @@ docs/
 # Claude Code — local-only agent config, never pushed
 .mcp.json
 .claude/
+.pi/
