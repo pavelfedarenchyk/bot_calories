@@ -14,7 +14,7 @@ Telegram-бот для учёта калорий. Текущая версия: *
 
 1. Скопируйте `.env.example` в `.env` и заполните переменные.
 2. Не коммитьте `.env` — он уже в `.gitignore`.
-3. Установите зависимости (`aiogram`, `aiohttp`) и запустите `python bot.py`.
+3. Установите зависимости: `pip install -r requirements.txt` (или `uv pip install -r requirements.txt`), затем запустите `python bot.py`.
 
 Версии фиксируются git-тегами (`v0.5.0`) и [GitHub Releases](https://github.com/pavelfedarenchyk/bot_calories/releases). История изменений — в [CHANGELOG.md](CHANGELOG.md).
 

@@ -2,6 +2,7 @@ import sqlite3
 import json
 import os
 from datetime import datetime, timedelta
+from pathlib import Path
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
 from aiogram.types import Message, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton
@@ -15,7 +16,29 @@ import re
 __version__ = "0.5.0"
 
 # ===== КОНФИГ =====
-TOKEN = "ВАШ_ТОКЕН_СЮДА"
+def load_env(path: Path = Path(__file__).with_name(".env")) -> None:
+    """Читает .env в os.environ, не затирая уже заданные переменные окружения."""
+    if not path.exists():
+        return
+
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        os.environ.setdefault(key.strip(), value.strip().strip("\"'"))
+
+
+load_env()
+
+TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+if not TOKEN:
+    raise SystemExit(
+        "Не задан TELEGRAM_BOT_TOKEN.\n"
+        "Создайте файл .env рядом с bot.py и добавьте строку:\n"
+        "TELEGRAM_BOT_TOKEN=<токен от BotFather>"
+    )
+
 bot = Bot(token=TOKEN)
 dp = Dispatcher(storage=MemoryStorage())
 

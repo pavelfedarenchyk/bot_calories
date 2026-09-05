@@ -38,3 +38,8 @@ yarn-error.log*
 .cache/
 tmp/
 temp/
+docs/
+
+# Claude Code — local-only agent config, never pushed
+.mcp.json
+.claude/
