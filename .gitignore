@@ -34,6 +34,7 @@ yarn-error.log*
 
 # Logs and local data
 *.log
+*.db
 .cache/
 tmp/
 temp/
